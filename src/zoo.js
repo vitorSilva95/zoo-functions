@@ -1,4 +1,4 @@
-const { species, employees } = require('./data');
+const { species, employees, prices } = require('./data');
 const data = require('./data');
 
 const getSpeciesByIds = (...ids) => species.filter((specie) => ids.includes(specie.id));
@@ -59,9 +59,15 @@ function countAnimals(speciess) {
   return objectName;
 }
 
-console.log(countAnimals('lions'));
 function calculateEntry(entrants) {
-  // seu código aqui
+  if (!entrants) {
+    return 0;
+  }
+  const adult = prices.Adult * (entrants.Adult || 0);
+  const child = prices.Child * (entrants.Child || 0);
+  const senio = prices.Senior * (entrants.Senior || 0);
+
+  return adult + child + senio;
 }
 
 function getAnimalMap(options) {
