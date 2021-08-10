@@ -133,17 +133,17 @@ function increasePrices(percentage) {
   const increasePriceChild = Math.round(prices.Child * percentage) / 100;
   const increasePriceSenior = Math.round(prices.Senior * percentage) / 100;
 
-  const adult = (increasePriceAdult + prices.Adult);
+  const adult = (increasePriceAdult + prices.Adult).toFixed(2);
   const child = (increasePriceChild + prices.Child).toFixed(2);
   const senior = (increasePriceSenior + prices.Senior).toFixed(2);
 
-  prices.Adult = adult;
-  prices.Child = child;
-  prices.Senior = senior;
+  prices.Adult = parseFloat(adult);
+  prices.Child = parseFloat(child);
+  prices.Senior = parseFloat(senior);
 
   return prices;
 }
-console.log(increasePrices(50));
+
 function getEmployeeCoverage(idOrName) {
   // seu código aqui
 }
