@@ -99,8 +99,7 @@ function getAnimalMap(options) {
   // }
   return localization;
 }
-console.log(getAnimalMap({ includeNames: true, sorted: true }));
-// console.log(getAnimalMap({ sex: 'female' }));
+
 function getSchedule(dayName) {
   const newObj = {};
   const days = Object.keys(hours);
@@ -121,8 +120,14 @@ function getSchedule(dayName) {
 }
 
 function getOldestFromFirstSpecies(id) {
-  // seu código aqui
+  const employe = employees.find((eployeId) => eployeId.id === id);
+  const employeResponsible = employe.responsibleFor.map((responsible) => responsible);
+  const filterSpecie = species.find((specieId) => specieId.id === employeResponsible[0]);
+  const olderAnimal = filterSpecie.residents.sort((a, b) => b.age - a.age)[0];
+  const { name, sex, age } = olderAnimal;
+  return [name, sex, age];
 }
+console.log(getOldestFromFirstSpecies('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'));
 
 function increasePrices(percentage) {
   // seu código aqui
