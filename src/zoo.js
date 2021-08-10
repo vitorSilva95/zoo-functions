@@ -127,12 +127,23 @@ function getOldestFromFirstSpecies(id) {
   const { name, sex, age } = olderAnimal;
   return [name, sex, age];
 }
-console.log(getOldestFromFirstSpecies('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'));
 
 function increasePrices(percentage) {
-  // seu código aqui
-}
+  const increasePriceAdult = Math.round(prices.Adult * percentage) / 100;
+  const increasePriceChild = Math.round(prices.Child * percentage) / 100;
+  const increasePriceSenior = Math.round(prices.Senior * percentage) / 100;
 
+  const adult = (increasePriceAdult + prices.Adult);
+  const child = (increasePriceChild + prices.Child).toFixed(2);
+  const senior = (increasePriceSenior + prices.Senior).toFixed(2);
+
+  prices.Adult = adult;
+  prices.Child = child;
+  prices.Senior = senior;
+
+  return prices;
+}
+console.log(increasePrices(50));
 function getEmployeeCoverage(idOrName) {
   // seu código aqui
 }
