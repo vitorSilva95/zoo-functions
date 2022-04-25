@@ -16,12 +16,12 @@
 ## Baixar e instalar as dependências
 
 ```
-- git clone git@github.com:vitorSilva95/zoo-functions.git
+git clone git@github.com:vitorSilva95/zoo-functions.git
 ```
 ```
-- cd zoo-functions
+cd zoo-functions
 ```
 ```
-- npm install
+npm install
 ```
 ---
