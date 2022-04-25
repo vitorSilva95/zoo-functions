@@ -94,9 +94,6 @@ function getAnimalMap(options) {
     acc[key].push(getValue(value, options));
     return acc;
   }, {});
-  // if (options.includeNames === true) {
-  //   return localization.map((names) => names.residents.name);
-  // }
   return localization;
 }
 
@@ -145,7 +142,16 @@ function increasePrices(percentage) {
 }
 
 function getEmployeeCoverage(idOrName) {
-  // seu código aqui
+  const firstOrLastName = (value) => value.lastName === idOrName || value.firstName === idOrName;
+  const exists = (i) => !idOrName || i.id === idOrName || firstOrLastName(i);
+  const employes = employees.filter((exists)).reduce((acc, valor) => {
+    const key = `${valor.firstName} ${valor.lastName}`;
+    const employeResponsible = valor.responsibleFor;
+    const animals = species.filter((a) => employeResponsible.includes(a.id)).map((i) => i.name);
+    acc[key] = animals;
+    return acc;
+  }, {});
+  return employes;
 }
 
 module.exports = {
